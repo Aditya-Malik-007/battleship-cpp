@@ -1,0 +1,10 @@
+# Build output
+build/
+
+# CMake cache
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+*.ninja
+.ninja_*
