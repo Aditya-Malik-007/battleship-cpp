@@ -1,49 +1,82 @@
-# Battleship — C++ / SFML
+# Battleship
 
-A 2-player naval combat game built with **C++20** and **SFML 3.0.2**.
+A local 2-player naval combat game built with C++20 and SFML 3.
+
+---
+
+## Requirements
+
+- [MSYS2](https://www.msys2.org/) with MinGW64
+- SFML 3 (install via MSYS2):
+
+```
+pacman -S mingw-w64-x86_64-sfml
+```
+
+---
 
 ## Build
 
-Requires [MSYS2](https://www.msys2.org/) with MinGW64 and SFML 3:
+Run `build.bat` from the project root:
 
-```bash
-pacman -S mingw-w64-x86_64-sfml mingw-w64-x86_64-cmake mingw-w64-x86_64-ninja
+```
+build.bat
 ```
 
-Then build:
+This compiles `src/main.cpp` with g++ and places the executable in `build/`.
 
-```bat
-cmake -S . -B build -G Ninja ^
-  -DCMAKE_CXX_COMPILER=C:/msys64/mingw64/bin/g++.exe ^
-  -DCMAKE_PREFIX_PATH=C:/msys64/mingw64
-cmake --build build
-```
-
-Or just run `build.bat` for a direct g++ compile.
+---
 
 ## Run
 
-```bat
+```
 build\battleship.exe
 ```
 
+---
+
 ## How to Play
 
-| Phase | Controls |
-|---|---|
-| Home | Click **START GAME** |
-| Setup | Click grid to place ship · **H** / **V** keys or buttons to rotate |
-| Handoff | Click **CONTINUE** to pass device to Player 2 |
-| Battle | Click enemy grid to fire · HIT = keep turn · MISS = switch |
-| Win | Click **PLAY AGAIN** |
+**Setup phase**
+
+Each player places 5 ships on their grid. Ships can be placed horizontally or vertically.
+
+- Press **H** to place horizontally
+- Press **V** to place vertically
+- Click a cell on the grid to confirm placement
+- Green highlight = valid position, red = invalid
+- After Player 1 is done, pass the device to Player 2
+
+**Battle phase**
+
+Players take turns firing at the enemy grid.
+
+- Click any cell on the enemy board to fire
+- HIT: your turn continues
+- MISS: the other player takes over
+
+The first player to sink all 5 enemy ships wins.
+
+---
+
+## Ships
+
+| Ship       | Size |
+|------------|------|
+| Carrier    | 5    |
+| Battleship | 4    |
+| Cruiser    | 3    |
+| Submarine  | 3    |
+| Destroyer  | 2    |
+
+---
 
 ## Project Structure
 
 ```
 src/
-├── Constants.hpp   — colors, grid size, ship definitions
-├── Board.hpp       — header-only 10×10 grid logic
-└── main.cpp        — game state, rendering, events, main loop
-CMakeLists.txt
-build.bat           — direct g++ fallback build script
+    Constants.hpp   grid size, colors, ship definitions
+    Board.hpp       10x10 grid logic (header-only)
+    main.cpp        game state, rendering, input, main loop
+build.bat           build script (calls g++ directly)
 ```
