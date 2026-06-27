@@ -80,3 +80,17 @@ src/
     main.cpp        game state, rendering, input, main loop
 build.bat           build script (calls g++ directly)
 ```
+
+---
+
+## Screenshots
+
+**Home Screen**
+
+![Home Screen](assets/homescreen.png)
+
+**Gameplay**
+
+![Gameplay](assets/gameplay.png)
+
+![Gameplay](assets/gameplay1.png)
